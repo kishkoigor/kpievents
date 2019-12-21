@@ -15,6 +15,8 @@ export default class Admin extends Component {
     });
   };
 
+
+
   render() {
     return (
       <div>
@@ -34,6 +36,7 @@ export default class Admin extends Component {
         <input type="text" placeholder="Заголовок" />
         <br/> <br/>
         <textarea placeholder="Описание"/>
+
       </div>
     );
   }
