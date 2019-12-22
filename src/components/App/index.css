@@ -1,39 +1,23 @@
-.AppContainer {
-  width: 100%;
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=cyrillic');
+
+*{
+  --color: #fff568;
+  --color-dark: #FFD66F;
+}
+
+body {
+  overflow-y: scroll;
   height: 100%;
-}
-
-.DayBlock {
-  width: 20%;
-  height: 50%;
-
-  margin: 0;
-  padding: 0 0 0 1vw;
-
-  /*background: aqua;*/
-}
-
-
-.weekday {
-  font-weight: 700;
-  font-size: 4.25vw;
-
   margin: 0;
   padding: 0;
-
-  position: relative;
-  top: -1.5vh;
-  left: -0.3vw;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  color: #000000;
 }
 
-.date {
-  font-size: 2vw;
-
-  position: relative;
-  top: -2vh;
-}
-
-.eventtitle{
-  font-size: 1vw;
-  margin-bottom: 2.25vh;
+div {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

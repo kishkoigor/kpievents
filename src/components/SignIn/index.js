@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-
-
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
@@ -48,8 +46,11 @@ class SignInFormBase extends Component {
   };
 
   onClick = () => {
-    this.props.firebase.db.ref('events').once('value').then((iaia) => {
-      console.log(iaia.val());
+    this.props.firebase.db
+      .ref('events')
+      .once('value')
+      .then((iaia) => {
+        console.log(iaia.val());
     })
 
   };

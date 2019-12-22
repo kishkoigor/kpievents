@@ -1,6 +1,5 @@
 // import React, {Component} from 'react';
 // import {BrowserRouter as Router, Route} from 'react-router-dom';
-// import './index.css'
 // import Navigation from '../Navigation';
 //
 // // import LandingPage from '../Landing';
@@ -50,8 +49,7 @@
 
 import React from 'react';
 import {BrowserRouter as Router, Route,} from 'react-router-dom';
-
-import Navigation from '../Navigation';
+import "./index.css";
 // import SignUpPage from '../SingUp';
 import SignInPage from '../SignIn';
 // import LandingPage from './Landing';
@@ -63,19 +61,18 @@ import SignInPage from '../SignIn';
 import AdminPage from '../Admin';
 
 import * as ROUTES from '../../constants/routes';
+import Main from "../Main";
 
 const App = () => (
   <Router>
-    <div>
-      <Navigation />
-
-      <hr />
+    <div className="App">
 
       {/*<Route exact path={ROUTES.LANDING} component={LandingPage} />*/}
       {/*<Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />*/}
       {/*<Route path={ROUTES.HOME} component={HomePage} />*/}
       {/*<Route path={ROUTES.ACCOUNT} component={AccountPage} />*/}
       {/*<Route path={ROUTES.SIGN_UP} component={SignUpPage} />*/}
+      <Route path={ROUTES.MAIN} component={Main} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
     </div>

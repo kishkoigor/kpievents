@@ -1,0 +1,41 @@
+.button {
+  height: 2.5rem;
+  background-color: var(--color);
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--color-dark);
+  color: #fff;
+}
+
+.button svg {
+  height: 1.25rem;
+  margin-right: 1rem;
+}
+
+.alignCenter {
+  justify-content: center;
+}
+
+.warning {
+  background-color: transparent;
+  color: red;
+  border: 1px solid red;
+  font-weight: 600;
+}
+.warning:hover {
+  background-color: red;
+  color: white;
+  font-weight: 600;
+}

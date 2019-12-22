@@ -1,0 +1,10 @@
+.eventForm {
+  width: 50vw;
+  height: 100vh;
+
+  padding: 5rem;
+}
+
+.eventFormHeading {
+  font-size: 2rem;
+}

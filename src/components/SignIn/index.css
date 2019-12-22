@@ -15,13 +15,28 @@ body {
   color: #000000;
 }
 
-.container {
-  width: 100vw;
-  padding: 5.25rem 2rem;
-  margin: 0 auto;
+div {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  height: 100vh;
   position: relative;
   z-index: 1;
   overflow: hidden;
 }
+
+.App {
+    width: 100vw;
+    padding: 5.25rem 2rem;
+    height: 100vh;
+}
+
+/*.container {*/
+/*  width: 100vw;*/
+/*  padding: 5.25rem 2rem;*/
+/*  margin: 0 auto;*/
+/*  box-sizing: border-box;*/
+/*  height: 100vh;*/
+/*  position: relative;*/
+/*  z-index: 1;*/
+/*  overflow: hidden;*/
+/*}*/

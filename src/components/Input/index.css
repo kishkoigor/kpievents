@@ -1,0 +1,91 @@
+.inputContainer {
+  width: 100%;
+  position: relative;
+  font-size: 0.875rem;
+  display: inline-block;
+  margin-bottom: 2rem;
+  height: 2.5rem;
+  margin-top: 1rem;
+}
+.input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 2.5rem;
+  box-sizing: border-box;
+  border: 1px solid;
+  border-color: #cccccc;
+  border-radius: 4px;
+  background: #FFFFFF;
+  user-select: none;
+  cursor: pointer;
+}
+.inputValue {
+  position: relative;
+  height: 2.5rem;
+}
+.inputValue input{
+  border-bottom: 1px solid #ccc;
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+  height: 2.5rem;
+  color: #333;
+}
+.inputValue input::placeholder {
+  color: #ccc;
+  text-shadow: none;
+}
+.activeInput {
+  position: relative;
+  border-radius: var(--corners) 0.25rem 0 0;
+  border-color: var(--accent-color);
+  overflow: visible;
+}
+.inputContainer input {
+  position: relative;
+  background: none;
+  font-size: 0.875rem;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  height: 2.5rem;
+  width: 100%
+}
+
+.inputContainer input::placeholder {
+  color:#ccc;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.description{
+  position: absolute;
+  top: -1.25rem;
+  left: 1rem;
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.errorDescription{
+  position: absolute;
+  top: -1.25rem;
+  right: 1rem;
+  font-size: 0.75rem;
+}
+
+.errorDescription, .error, .error::placeholder{
+  fill: #FF0000 !important;;
+  color: #FF0000 !important;
+  border-color: #FF0000 !important;
+}
+
+
+@media all and (orientation: portrait), all and (max-width: 1025px) {
+  .description, .errorDescription{
+    position: absolute;
+    top: -1.25rem;
+    left: 1rem;
+    font-size: 0.75rem;
+  }
+}
