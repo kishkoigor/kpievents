@@ -1,55 +1,34 @@
 import React, { Component } from 'react';
 
 import "./index.css"
+import {compose} from "recompose";
+import {withFirebase} from "../Firebase";
 
-class Main extends Component {
+class MainBase extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isClicked: false,
-
     }
+  }
 
-
+  componentDidMount() {
+      this.props.firebase.db
+        .ref('events')
+        .once('value')
+        .then((eventlist) => {
+          this.setState({
+            eventlist: eventlist.val(),
+          })
+        })
   }
 
   render() {
+
     return(
       <div className="MainPage">
-        <Day
-          weekday='Пн'
-          date='23.10'
-        />
-        <Day
-          weekday='Вт'
-          date='24.10'
-        />
-        <Day
-          weekday='Ср'
-          date='25.10'
-          extended
-        />
-        {/*<Day*/}
-        {/*  weekday='Ыы'*/}
-        {/*  date='ыы.ыы'*/}
-        {/*/>*/}
-        <Day
-          weekday='Чт'
-          date='26.10'
-        />
-        <Day
-          weekday='Пт'
-          date='27.10'
-        />
-        <Day
-          weekday='Сб'
-          date='28.10'
-        />
-        <Day
-          weekday='Нд'
-          date='29.10'
-        />
+
       </div>
     )
   }
@@ -65,7 +44,7 @@ class Day extends Component {
         title: (<span color='red'> Тут повинен бути заголовок </span>),
         longtitle: 'Тут повинен бути розширений заголовок',
         description: 'Тут повинно бути повинен бути корткий але чіткий опис івенту. Важливо, аби він був зрозумілий, але не уміщався у колонку.',
-        eventDateTime: new Date(),
+        eventdatetime: new Date(),
       },
     },
     extended: false,
@@ -75,37 +54,36 @@ class Day extends Component {
     super(props);
     this.state = {
       extended: false,
-      choosedEvent: this.props.testing ? 'test' : '',
+      choosedEvent: Object.keys(this.props.eventlist)[0],
     }
 
   };
 
   test = () => {
-    console.log(this.props.eventlist[this.state.choosedEvent].eventDateTime);
+    console.log(this.props.eventlist[this.state.choosedEvent]);
     console.log(this.state.choosedEvent);
   };
 
+  weekdayshortcutlist = ['Нд','Пн','Вт','Ср','Чт','Пт','Сб'];
+
+  // eventdatetime = this.props.eventlist[this.state.choosedEvent].eventdatetime;
+  // timestring = this.props.eventlist[this.state.choosedEvent].eventdatetime.getHours() + ':' + this.props.eventlist[this.state.choosedEvent].eventdatetime.getMinutes();
+  // weekdayshortcut =  this.weekdayshortcutlist[this.props.datetime.getDay()];
+  // eventdate = this.props.datetime.getDate() + '.' + this.props.datetime.getMonth();
 
   render() {
-
-    const weekdayshortcutlist = ['Нд','Пн','Вт','Ср','Чт','Пт','Сб'];
-
-    const eventdatetime = this.props.eventlist[this.state.choosedEvent].eventDateTime;
-
-    const timestring = eventdatetime.getHours() + ':' + eventdatetime.getMinutes();
-    const weekdayshortcut = weekdayshortcutlist[this.props.datetime.getDay()];
-    const eventdate = this.props.datetime.getDate() + '.' + this.props.datetime.getMonth();
+    
 
     return(
       <div className={'Day' + (this.props.extended ? ' ' + 'DayExtended' : '')}>
         <div className={this.props.extended ? 'DayHeaderExtended' : 'DayHeader'}>
           <div className='weekday'>
 
-            {weekdayshortcut}
+            {this.weekdayshortcutlist[this.props.eventlist[this.state.choosedEvent].eventdatetime.getDay()]}
 
           </div>
           <div className='date'>
-            {eventdate}
+            {this.props.eventlist[this.state.choosedEvent].eventdatetime.getDate() + '.' + this.props.eventlist[this.state.choosedEvent].eventdatetime.getMonth()}
           </div>
         </div>
 
@@ -129,10 +107,10 @@ class Day extends Component {
         {this.props.extended ?
           <div className='eventProfile'>
             <div className='eventProfileLongtitle'>
-              {this.props.longtitle}
+              {this.props.eventlist[this.state.choosedEvent].longtitle}
             </div>
             <div className='eventProfileDescription'>
-              {this.props.description}
+              {this.props.eventlist[this.state.choosedEvent].description}
             </div>
           </div> : null
         }
@@ -148,7 +126,7 @@ class Day extends Component {
             </svg>
 
             <div className='eventTime' onClick={this.test}>
-              {timestring}
+              {this.props.eventlist[this.state.choosedEvent].eventdatetime.getHours() + ':' + this.props.eventlist[this.state.choosedEvent].eventdatetime.getMinutes()}
             </div>
           </div> : null
         }
@@ -158,4 +136,7 @@ class Day extends Component {
 }
 
 export { Day }
+
+const Main = compose(withFirebase)(MainBase);
+
 export default Main

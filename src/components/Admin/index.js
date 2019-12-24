@@ -12,15 +12,19 @@ import Button from "../Button";
 import Textarea from "../Textarea";
 import {Day} from "../Main";
 
+  const INITIAL_STATE = {
+    title: '',
+    longtitle: '',
+    description: '',
+    eventdatetime: new Date(),
+  }
+
 class AdminBase extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      longtitle: '',
-      description: '',
-      datetime: new Date(),
+      ...INITIAL_STATE
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -32,7 +36,7 @@ class AdminBase extends Component {
 
   pickDateTime = date => {
     this.setState({
-      datetime: date
+      eventdatetime: date
     });
   };
 
@@ -40,7 +44,7 @@ class AdminBase extends Component {
     console.log(this.state.title)
   };
 
-  addNewEvent = (title, longtitle, description, datetime) => {
+  addNewEvent = () => {
     const removeTime = (datetime) => {
       datetime.setHours(0);
       datetime.setMinutes(0);
@@ -50,18 +54,22 @@ class AdminBase extends Component {
       return datetime.valueOf()
     };
 
-    const key = removeTime(datetime);
+    const key = removeTime(new Date(this.state.eventdatetime.getTime()));
+
 
     const path = this.props.firebase.db.ref('events').child(key).push();
 
     path.set({
-      title,
-      longtitle,
-      description,
-      datetime: datetime.toString(),
+      title: this.state.title,
+      longtitle: this.state.longtitle,
+      description: this.state.description,
+      datetime: this.state.eventdatetime.toString(),
     }).then(() => {
       console.log('added new event');
-      console.log(datetime);
+      this.setState({
+        ...INITIAL_STATE
+      })
+
     }).catch((error) => {
       console.log('something went wrong');
       console.log(error);
@@ -91,8 +99,6 @@ class AdminBase extends Component {
       test: {...this.state}
     };
 
-    console.log(testevent);
-
     return (
       <div className='addEventForm'>
         <div className="addEventFormContainer">
@@ -100,29 +106,29 @@ class AdminBase extends Component {
           <h1 className='eventFormHeading'>Додати подію</h1>
 
           <Input
-            placeholder="Краткий заголовок"
+            placeholder="Короткий заголовок"
             value={this.state.title}
             onChange={this.onChangeHandler}
             param='title'
           />
 
           <Input
-            placeholder="Расширенный заголовок"
+            placeholder="Розширений заголовок"
             value={this.state.longtitle}
             onChange={this.onChangeHandler}
             param='longtitle'
           />
 
           <Textarea
-            placeholder="Описание"
+            placeholder="Опис"
             value={this.state.description}
             onChange={this.onChangeHandler}
             param='description'
           />
 
-          <div className='itshouldntbethere'>
+
             <DatePicker
-              selected={this.state.datetime}
+              selected={this.state.eventdatetime}
               onChange={this.pickDateTime}
               dateFormat="MMMM d, yyyy h:mm"
               minDate={new Date()}
@@ -131,18 +137,18 @@ class AdminBase extends Component {
               timeIntervals={15}
               inline
             />
-          </div>
+
 
         </div>
         <div className='addEventFormContainer'>
 
           <Day
-            eventlist={}
+            eventlist={testevent}
             extended
             testing
           />
 
-          <Button onClick={this.test} placeholder="Сохранить" />
+          <Button className='submitEventFormButton' onClick={this.addNewEvent} placeholder='Зберегти подію' />
         </div>
       </div>
     );

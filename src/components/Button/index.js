@@ -41,7 +41,7 @@ class Button extends Component{
             null
         }
 
-        {this.props.caption}
+        {this.props.placeholder}
 
       </Link>
     );

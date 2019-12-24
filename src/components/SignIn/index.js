@@ -32,7 +32,7 @@ class SignInFormBase extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.SIGN_IN);
+        this.props.history.push(ROUTES.ADMIN);
       })
       .catch(error => {
         this.setState({ error });
@@ -45,15 +45,6 @@ class SignInFormBase extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  onClick = () => {
-    this.props.firebase.db
-      .ref('events')
-      .once('value')
-      .then((iaia) => {
-        console.log(iaia.val());
-    })
-
-  };
 
   render() {
     const { email, password, error } = this.state;
@@ -81,8 +72,6 @@ class SignInFormBase extends Component {
         </button>
 
         {error && <p>{error.message}</p>}
-
-        <p onClick={this.onClick}>text</p>
 
       </form>
     );
