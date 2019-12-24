@@ -1,23 +1,53 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=cyrillic');
+@import url(//db.onlinewebfonts.com/c/066ce24dae3730ed6c648b09efaea93a?family=Acumin+Variable+Concept);
+
+@font-face {
+  font-family: "FranklinGothic-DemiCond";
+  src: url("../../fonts/franklin-gothic-demi-condallfontru.eot"); /* IE9 Compat Modes */
+  src: url("../../fonts/franklin-gothic-demi-condallfontru.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../../fonts/franklin-gothic-demi-condallfontru.otf") format("opentype"), /* Open Type Font */
+  url("../../fonts/franklin-gothic-demi-condallfontru.svg") format("svg"), /* Legacy iOS */
+  url("../../fonts/franklin-gothic-demi-condallfontru.ttf") format("truetype"), /* Safari, Android, iOS */
+  url("../../fonts/franklin-gothic-demi-condallfontru.woff") format("woff"), /* Modern Browsers */
+  url("../../fonts/franklin-gothic-demi-condallfontru.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FranklinGothic-Medium";
+  src: url("../../fonts/franklin-gothic-mediumallfontru.eot"); /* IE9 Compat Modes */
+  src: url("../../fonts/franklin-gothic-mediumallfontru.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../../fonts/franklin-gothic-mediumallfontru.otf") format("opentype"), /* Open Type Font */
+  url("../../fonts/franklin-gothic-mediumallfontru.svg") format("svg"), /* Legacy iOS */
+  url("../../fonts/franklin-gothic-mediumallfontru.ttf") format("truetype"), /* Safari, Android, iOS */
+  url("../../fonts/franklin-gothic-mediumallfontru.woff") format("woff"), /* Modern Browsers */
+  url("../../fonts/franklin-gothic-mediumallfontru.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
 
 *{
-  --color: #fff568;
+  --color: #fff55c;
   --color-dark: #FFD66F;
+  --transition: all 1s ease-in-out;
 }
 
 body {
-  overflow-y: scroll;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  height: 100vh;
+  width: 100vw;
   font-size: 16px;
   font-weight: 400;
-  font-family: 'Roboto', sans-serif;
+  font-family: "FranklinGothic-DemiCond", sans-serif;
   color: #000000;
 }
 
-div {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@media all and (max-width: 1441px) {
+  html, body {
+    font-size: 14px;
+  }
+}
+@media all and (max-width: 1300px) {
+  html, body {
+    font-size: 12px;
+  }
 }

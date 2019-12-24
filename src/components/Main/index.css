@@ -1,0 +1,125 @@
+.MainPage {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: space-between;
+
+  padding: 7.6vh 2.7vw;
+  /*padding: 4.285vh;*/
+
+  overflow: hidden;
+}
+
+.Day {
+  height: 39.3vh;
+  width: 20vw;
+
+  transition: var(--transition);
+  /*border: 1px solid black;*/
+}
+
+.DayHeader {
+  margin: 0 0 1.1vh 0;
+
+  position: relative;
+  top: -1.6vh;
+  left: -0.29vw;
+}
+.weekday {
+  font-family: "FranklinGothic-DemiCond", sans-serif;
+  font-size: 8.69vh;
+}
+
+.date {
+  font-family: Acumin Variable Concept, sans-serif;
+  font-size: 4.1vh;
+  padding: 0.4vh 0 0 0.2vw;
+}
+
+.eventListItem {
+  margin: 0 0 3.05vh 0;
+
+  line-height: 2vh;
+  font-size: 2.25vh;
+}
+
+.DayExtended {
+  width: 44.866vw !important;
+
+  background: var(--color);
+
+  padding: 4.5vh 0;
+  border-radius: 6% / 12%;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.DayHeaderExtended {
+  color: white;
+  position: relative;
+  left: -0.4vw;
+  top: -0.65vh;
+
+  width: 10vw;
+}
+
+.DayHeaderExtended > .weekday {
+  font-family: "FranklinGothic-DemiCond", sans-serif;
+  font-size: 12.7vh;
+}
+
+.DayHeaderExtended > .date {
+  font-family: Acumin Variable Concept, sans-serif;
+  font-size: 5.7vh;
+}
+
+.eventProfile {
+  width: 26vw;
+  height: 30vh;
+  align-self: flex-start;
+
+  overflow: hidden;
+
+  font-family: "Franklin Gothic Medium", sans-serif;
+  font-size: 2vh;
+  line-height: 2.6vh;
+}
+
+.eventProfileLongtitle {
+  font-family: "FranklinGothic-DemiCond", sans-serif;
+  font-size: 2.6vh;
+  line-height: 2.5vh;
+
+  margin: 0 0 2vh 0;
+}
+
+.eventProfileDescription {
+  font-family: "Franklin Gothic Medium", sans-serif;
+  font-size: 1.8vh;
+  line-height: 2.6vh;
+}
+
+.serviceicons {
+  width: 8.86vw;
+}
+
+.eventTime {
+  font-size: 4.15vh;
+  color: white;
+  position: relative;
+  right: -0.7vw;
+  top: -1.9vw;
+}
+
+.exitbutton {
+  right: -4.4vw;
+  top: -12vh;
+  width: 2vw;
+  position: relative;
+  cursor: pointer;
+}

@@ -1,10 +1,29 @@
-.eventForm {
+.addEventForm {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-flow: row nowrap;
+}
+.addEventFormContainer {
   width: 50vw;
   height: 100vh;
 
-  padding: 5rem;
+  padding: 7.6vh 2.7vw;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  justify-content: space-evenly;
 }
 
 .eventFormHeading {
   font-size: 2rem;
+
+  margin: 0 0 2rem 0;
+}
+
+.itshouldntbethere {
+  width: 24rem;
+  margin: 0 auto 2rem;
 }

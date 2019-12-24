@@ -4,8 +4,7 @@
   font-size: 0.875rem;
   display: inline-block;
   margin-bottom: 2rem;
-  height: 7.5rem;
-  margin-top: 1rem;
+  min-height: 7.5rem;
 }
 .textarea {
   display: flex;
@@ -29,6 +28,7 @@
   position: relative;
   height: 7.5rem;
   color: #333;
+  resize: none;
 }
 .textareaValue textarea::placeholder {
   color: #ccc;
@@ -36,7 +36,7 @@
 }
 .activeInput {
   position: relative;
-  border-radius: var(--corners) 0.25rem 0 0;
+  border-radius: 0.25rem 0.25rem 0 0;
   border-color: var(--color);
   overflow: visible;
 }

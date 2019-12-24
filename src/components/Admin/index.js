@@ -10,19 +10,18 @@ import * as ROUTES from "../../constants/routes";
 import Input from "../Input";
 import Button from "../Button";
 import Textarea from "../Textarea";
-
-const INITIAL_STATE = {
-  title: '',
-  longtitle: '',
-  description: '',
-  datetime: new Date(),
-};
+import {Day} from "../Main";
 
 class AdminBase extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { ...INITIAL_STATE };
+    this.state = {
+      title: '',
+      longtitle: '',
+      description: '',
+      datetime: new Date(),
+    };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
   }
@@ -37,6 +36,9 @@ class AdminBase extends Component {
     });
   };
 
+  test = () => {
+    console.log(this.state.title)
+  };
 
   addNewEvent = (title, longtitle, description, datetime) => {
     const removeTime = (datetime) => {
@@ -84,39 +86,63 @@ class AdminBase extends Component {
   // };
 
   render() {
+
+    const testevent = {
+      test: {...this.state}
+    };
+
+    console.log(testevent);
+
     return (
-      <div>
-        <div className="eventForm">
+      <div className='addEventForm'>
+        <div className="addEventFormContainer">
 
           <h1 className='eventFormHeading'>Додати подію</h1>
 
           <Input
             placeholder="Краткий заголовок"
+            value={this.state.title}
+            onChange={this.onChangeHandler}
+            param='title'
           />
 
           <Input
             placeholder="Расширенный заголовок"
+            value={this.state.longtitle}
+            onChange={this.onChangeHandler}
+            param='longtitle'
           />
 
-          <Textarea placeholder="Описание"/>
-
-          <DatePicker
-            selected={this.state.datetime}
-            onChange={this.pickDateTime}
-            dateFormat="MMMM d, yyyy h:mm"
-            minDate={this.state.datetime}
-            showTimeSelect
-            timeFormat="HH:mm"
-            timeIntervals={15}
-            timeCaption="Время"
-            inline
-            calendarClassName="eventsDatePicker"
+          <Textarea
+            placeholder="Описание"
+            value={this.state.description}
+            onChange={this.onChangeHandler}
+            param='description'
           />
 
-          <Button placeholder="Сохранить" />
+          <div className='itshouldntbethere'>
+            <DatePicker
+              selected={this.state.datetime}
+              onChange={this.pickDateTime}
+              dateFormat="MMMM d, yyyy h:mm"
+              minDate={new Date()}
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              inline
+            />
+          </div>
+
         </div>
-        <div>
+        <div className='addEventFormContainer'>
 
+          <Day
+            eventlist={}
+            extended
+            testing
+          />
+
+          <Button onClick={this.test} placeholder="Сохранить" />
         </div>
       </div>
     );
