@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import "./index.css"
 import {compose} from "recompose";
 import {withFirebase} from "../Firebase";
+import logo from './logo.png'
 
 class MainBase extends Component {
   constructor(props) {
@@ -10,7 +11,9 @@ class MainBase extends Component {
 
     this.state = {
       isClicked: false,
-    }
+    };
+
+    this.isClickedHandler = this.isClickedHandler.bind(this);
   }
 
   componentDidMount() {
@@ -24,11 +27,115 @@ class MainBase extends Component {
         })
   }
 
+  isClickedHandler = () => {
+    this.setState({
+      isClicked: !this.state.isClicked,
+    });
+
+  };
+
   render() {
 
     return(
       <div className="MainPage">
+        <Day
+          eventlist={{
+            test: {
+              eventdatetime: new Date(2019, 11,23),
+              title: 'Якийсь класний івент з дуже коротким заголовком',
+              longtitle: 'Якийсь класний івент з дуже коротким заголовком, але трохи довшим',
+              description: 'Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший'
 
+            }
+          }}
+          onClick={this.isClickedHandler}
+          locked={this.state.isClicked}
+        />
+        <Day
+          eventlist={{
+            test: {
+              eventdatetime: new Date(2019, 11,24,12, 15),
+              title: 'Якийсь класний івент з дуже коротким заголовком',
+              longtitle: 'Якийсь класний івент з дуже коротким заголовком, але трохи довшим',
+              description: 'Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший'
+            }
+          }}
+          onClick={this.isClickedHandler}
+          locked={this.state.isClicked}
+        />
+        <Day
+          eventlist={{
+            test: {
+              eventdatetime: new Date(2019, 11,25, 12, 15),
+              title: 'Якийсь класний івент з дуже коротким заголовком',
+              longtitle: 'Якийсь класний івент з дуже коротким заголовком, але трохи довшим',
+              description: 'Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший'
+            }
+          }}
+          onClick={this.isClickedHandler}
+          locked={this.state.isClicked}
+        />
+        {
+          this.state.isClicked ? null :
+            <div className='Day'>
+              <img className='logo' src={logo}/>
+            </div>
+        }
+
+
+        <Day
+          eventlist={{
+            test: {
+              eventdatetime: new Date(2019, 11,26,12, 15),
+              title: 'Якийсь класний івент з дуже коротким заголовком',
+              longtitle: 'Якийсь класний івент з дуже коротким заголовком, але трохи довшим',
+              description: 'Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший'
+
+            }
+          }}
+          onClick={this.isClickedHandler}
+          locked={this.state.isClicked}
+        />
+
+        <Day
+          eventlist={{
+            test: {
+              eventdatetime: new Date(2019, 11,27, 12, 15),
+              title: 'Якийсь класний івент з дуже коротким заголовком',
+              longtitle: 'Якийсь класний івент з дуже коротким заголовком, але трохи довшим',
+              description: 'Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший'
+
+            }
+          }}
+          onClick={this.isClickedHandler}
+          locked={this.state.isClicked}
+        />
+        <Day
+          eventlist={{
+            test: {
+              eventdatetime: new Date(2019, 11,28, 12, 15),
+              title: 'Якийсь класний івент з дуже коротким заголовком',
+              longtitle: 'Якийсь класний івент з дуже коротким заголовком, але трохи довшим',
+              description: 'Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший'
+
+            }
+          }}
+          onClick={this.isClickedHandler}
+          locked={this.state.isClicked}
+        />
+        <Day
+          eventlist={{
+            test: {
+              eventdatetime: new Date(2019, 11,29, 12, 15),
+              title: 'Якийсь класний івент з дуже коротким заголовком',
+              longtitle: 'Якийсь класний івент з дуже коротким заголовком, але трохи довшим',
+              description: 'Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший. Якийсь класний текст з дуже зрозумілим змістом, але трохи цікаіший'
+
+            }
+          }}
+          onClick={this.isClickedHandler}
+          locked={this.state.isClicked}
+        />
       </div>
     )
   }
@@ -59,9 +166,17 @@ class Day extends Component {
 
   };
 
-  test = () => {
-    console.log(this.props.eventlist[this.state.choosedEvent]);
-    console.log(this.state.choosedEvent);
+  // test = () => {
+  //   console.log(this.props.eventlist[this.state.choosedEvent]);
+  //   console.log(this.state.choosedEvent);
+  // };
+
+  onClickHandler = () => {
+    if(!this.props.locked){
+      this.setState({
+        extended: !this.state.extended,
+      });
+    }
   };
 
   weekdayshortcutlist = ['Нд','Пн','Вт','Ср','Чт','Пт','Сб'];
@@ -75,19 +190,19 @@ class Day extends Component {
     
 
     return(
-      <div className={'Day' + (this.props.extended ? ' ' + 'DayExtended' : '')}>
-        <div className={this.props.extended ? 'DayHeaderExtended' : 'DayHeader'}>
+      <div onClick={()=>{this.onClickHandler(); if(!this.props.locked){ this.props.onClick();}}} className={'Day' + (this.state.extended ? ' ' + 'DayExtended' : '')}>
+        <div className={this.state.extended ? 'DayHeaderExtended' : 'DayHeader'}>
           <div className='weekday'>
 
             {this.weekdayshortcutlist[this.props.eventlist[this.state.choosedEvent].eventdatetime.getDay()]}
 
           </div>
           <div className='date'>
-            {this.props.eventlist[this.state.choosedEvent].eventdatetime.getDate() + '.' + this.props.eventlist[this.state.choosedEvent].eventdatetime.getMonth()}
+            {this.props.eventlist[this.state.choosedEvent].eventdatetime.getDate() + '.' + (this.props.eventlist[this.state.choosedEvent].eventdatetime.getMonth() + 1)}
           </div>
         </div>
 
-        {this.props.extended ? null :
+        {this.state.extended ? null :
           <div className='eventList'>
             <div className='eventListItem'>
               Якийсь класний івент з дуже коротким заголовком
@@ -104,7 +219,7 @@ class Day extends Component {
           </div>
         }
 
-        {this.props.extended ?
+        {this.state.extended ?
           <div className='eventProfile'>
             <div className='eventProfileLongtitle'>
               {this.props.eventlist[this.state.choosedEvent].longtitle}
@@ -115,9 +230,10 @@ class Day extends Component {
           </div> : null
         }
 
-        {this.props.extended ?
+        {this.state.extended ?
           <div className='serviceicons'>
             <svg
+              onClick={()=>{this.onClickHandler(); this.props.onClick(); this.setState({extended: false})}}
               className='exitbutton'
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 320 512'

@@ -17,7 +17,7 @@
   height: 39.3vh;
   width: 20vw;
 
-  transition: var(--transition);
+  /*transition: var(--transition);*/
   /*border: 1px solid black;*/
 }
 
@@ -122,4 +122,9 @@
   width: 2vw;
   position: relative;
   cursor: pointer;
+}
+
+.logo{
+  width: 100%;
+  margin: 0 auto;
 }

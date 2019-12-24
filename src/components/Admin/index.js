@@ -146,6 +146,8 @@ class AdminBase extends Component {
             eventlist={testevent}
             extended
             testing
+            locked={false}
+            onClick={()=>{}}
           />
 
           <Button className='submitEventFormButton' onClick={this.addNewEvent} placeholder='Зберегти подію' />
