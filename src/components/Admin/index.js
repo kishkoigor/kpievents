@@ -55,7 +55,8 @@ class AdminBase extends Component {
     };
 
     const key = removeTime(new Date(this.state.eventdatetime.getTime()));
-
+    console.log(this.state.eventdatetime.getTime());
+    console.log(key);
 
     const path = this.props.firebase.db.ref('events').child(key).push();
 
@@ -94,10 +95,6 @@ class AdminBase extends Component {
   // };
 
   render() {
-
-    const testevent = {
-      test: {...this.state}
-    };
 
     return (
       <div className='addEventForm'>
@@ -143,7 +140,7 @@ class AdminBase extends Component {
         <div className='addEventFormContainer'>
 
           <Day
-            eventlist={testevent}
+            eventlist={[{...this.state}]}
             extended
             testing
             locked={false}

@@ -146,14 +146,12 @@ class Day extends Component {
   static defaultProps = {
     testing: false,
     datetime: new Date(),
-    eventlist: {
-      test: {
-        title: (<span color='red'> Тут повинен бути заголовок </span>),
-        longtitle: 'Тут повинен бути розширений заголовок',
-        description: 'Тут повинно бути повинен бути корткий але чіткий опис івенту. Важливо, аби він був зрозумілий, але не уміщався у колонку.',
-        eventdatetime: new Date(),
-      },
-    },
+    eventlist: [{
+      title: (<span color='red'> Тут повинен бути заголовок </span>),
+      longtitle: 'Тут повинен бути розширений заголовок',
+      description: 'Тут повинно бути повинен бути корткий але чіткий опис івенту. Важливо, аби він був зрозумілий, але уміщався у колонку.',
+      eventdatetime: new Date(),
+    }],
     extended: false,
   };
 
@@ -161,13 +159,13 @@ class Day extends Component {
     super(props);
     this.state = {
       extended: false,
-      choosedEvent: Object.keys(this.props.eventlist)[0],
+      choosedEventKey: 0,
     }
 
   };
 
   // test = () => {
-  //   console.log(this.props.eventlist[this.state.choosedEvent]);
+  //   console.log(this.props.eventlist[this.state.choosedEventKey]);
   //   console.log(this.state.choosedEvent);
   // };
 
@@ -178,6 +176,8 @@ class Day extends Component {
       });
     }
   };
+
+  eventlist = Object.values(this.props.eventlist);
 
   weekdayshortcutlist = ['Нд','Пн','Вт','Ср','Чт','Пт','Сб'];
 
@@ -190,42 +190,45 @@ class Day extends Component {
     
 
     return(
-      <div onClick={()=>{this.onClickHandler(); if(!this.props.locked){ this.props.onClick();}}} className={'Day' + (this.state.extended ? ' ' + 'DayExtended' : '')}>
+      <div onClick={ this.state.extended ?  ()=>{this.onClickHandler(); if(!this.props.locked){ this.props.onClick();}} : ()=>{} } className={'Day' + (this.state.extended ? ' ' + 'DayExtended' : '')}>
         <div className={this.state.extended ? 'DayHeaderExtended' : 'DayHeader'}>
           <div className='weekday'>
 
-            {this.weekdayshortcutlist[this.props.eventlist[this.state.choosedEvent].eventdatetime.getDay()]}
+            {this.weekdayshortcutlist[this.props.eventlist[this.state.choosedEventKey].eventdatetime.getDay()]}
 
           </div>
           <div className='date'>
-            {this.props.eventlist[this.state.choosedEvent].eventdatetime.getDate() + '.' + (this.props.eventlist[this.state.choosedEvent].eventdatetime.getMonth() + 1)}
+            {this.props.eventlist[this.state.choosedEventKey].eventdatetime.getDate().toString().padStart(2, '0') + '.' + (this.props.eventlist[this.state.choosedEventKey].eventdatetime.getMonth() + 1).toString().toString().padStart(2, '0')}
           </div>
         </div>
 
         {this.state.extended ? null :
           <div className='eventList'>
-            <div className='eventListItem'>
-              Якийсь класний івент з дуже коротким заголовком
-            </div>
-            <div className='eventListItem'>
-              Якийсь класний івент з дуже коротким заголовком
-            </div>
-            <div className='eventListItem'>
-              Якийсь класний івент з дуже коротким заголовком
-            </div>
-            <div className='eventListItem'>
-              Якийсь класний івент з дуже коротким заголовком
-            </div>
+
+            {
+
+              this.props.eventlist.map((item, i) => {
+                return (
+                  <div onClick={()=>{this.onClickHandler(); if(!this.props.locked){ this.props.onClick();}}} className='eventListItem' key={i}>
+                    {item.title}
+                  </div>
+                );
+              })
+
+              // console.log(Object.values(this.props.eventlist))
+
+            }
+
           </div>
         }
 
         {this.state.extended ?
           <div className='eventProfile'>
             <div className='eventProfileLongtitle'>
-              {this.props.eventlist[this.state.choosedEvent].longtitle}
+              {this.props.eventlist[this.state.choosedEventKey].longtitle}
             </div>
             <div className='eventProfileDescription'>
-              {this.props.eventlist[this.state.choosedEvent].description}
+              {this.props.eventlist[this.state.choosedEventKey].description}
             </div>
           </div> : null
         }
@@ -242,7 +245,7 @@ class Day extends Component {
             </svg>
 
             <div className='eventTime' onClick={this.test}>
-              {this.props.eventlist[this.state.choosedEvent].eventdatetime.getHours() + ':' + this.props.eventlist[this.state.choosedEvent].eventdatetime.getMinutes()}
+              {this.props.eventlist[this.state.choosedEventKey].eventdatetime.getHours().toString().padStart(2, '0') + ':' + this.props.eventlist[this.state.choosedEventKey].eventdatetime.getMinutes().toString().padStart(2, '0')}
             </div>
           </div> : null
         }
