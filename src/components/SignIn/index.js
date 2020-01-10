@@ -1,20 +1,22 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'recompose';
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { compose } from "recompose";
+import { withFirebase } from "../Firebase";
+import * as ROUTES from "../../constants/routes";
+import Input from "../Input/index.js";
+import Button from "../Button";
+import "./index.css";
+
 
 const SignInPage = () => (
   <div>
-    <h1>SignIn</h1>
     <SignInForm />
-
   </div>
 );
 
 const INITIAL_STATE = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
   error: null,
 };
 
@@ -23,9 +25,11 @@ class SignInFormBase extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+
+    this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
-  onSubmit = event => {
+  submit = () => {
     const { email, password } = this.state;
 
     this.props.firebase
@@ -35,45 +39,57 @@ class SignInFormBase extends Component {
         this.props.history.push(ROUTES.ADMIN);
       })
       .catch(error => {
-        this.setState({ error });
+        console.log(error);
+        document.body.style.animation = "error 1s";
+        setTimeout(()=>{
+          document.body.style.animation = "none";
+        }, 1000);
       });
 
-    event.preventDefault();
   };
 
-  onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
+  onChangeHandler(value, param){
+    this.setState({[param]:value})
+  }
 
   render() {
-    const { email, password, error } = this.state;
-
-    const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
+      <div className = "page">
+      <div className = "leftSide">
+        <h1 className="auth">Авторизація</h1>
+        <h2 className="login">Пошта</h2>
 
-        {error && <p>{error.message}</p>}
+        <Input
+            className = "inputLogin"
+            type="email"
+            placeholder="Email Address"
+            value={this.state.email}
+            onChange={this.onChangeHandler}
+            param="email"
+        />  
 
-      </form>
+        <h2 className="login">Пароль</h2>
+
+        <Input
+            className = "inputLogin"
+            type="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.onChangeHandler}
+            param="password"
+        />        
+
+        <Button className="signInButton" onClick={this.submit} placeholder="увійти" />
+      
+      </div>
+      <div className = "rightSide">
+        <p>Це сторінка авторизації редакторів, якщо ти хочеш стати одим із 
+          <br /> нас - пиши сюди </p>
+          <a href="mailto:kishko.igor@gmail.com">kishko.igor@gmail.com</a>
+      </div>
+      </div>
+
     );
   }
 }

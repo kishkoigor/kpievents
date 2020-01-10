@@ -1,42 +1,69 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=cyrillic');
 
-*{
-  --color: #fff568;
+.login {
+    margin-bottom: 0.4rem;
+    font-size: 1.6rem;
+    font-family: "FranklinGothic-Medium", sans-serif;
 }
 
-body {
-  overflow-y: scroll;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  font-weight: 400;
-  font-family: 'Roboto', sans-serif;
-  color: #000000;
+.auth {
+  font-size: 3.3rem;
+  margin: 3vh 0;
+  font-family: "FranklinGothic-DemiCond", sans-serif;
 }
 
-div {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
+.signInButton {
+  padding: 1rem 1.75rem;
+  border-radius: 1.7rem;
+  width: fit-content;
+  font-size: 1.3rem;
+  margin-left: 8.5rem;
+  text-align: center;
+  border: 2px solid var(--color-dark);
+  transition-delay: 0.1s; 
 }
 
-.App {
-    width: 100vw;
-    padding: 5.25rem 2rem;
-    height: 100vh;
+.inputLogin {
+  width: 25rem;
 }
 
-/*.container {*/
-/*  width: 100vw;*/
-/*  padding: 5.25rem 2rem;*/
-/*  margin: 0 auto;*/
-/*  box-sizing: border-box;*/
-/*  height: 100vh;*/
-/*  position: relative;*/
-/*  z-index: 1;*/
-/*  overflow: hidden;*/
-/*}*/
+.rightSide{
+  font-family: "FranklinGothic-DemiCond", sans-serif;
+  margin: 23vh 7vw 23vw 0;
+  width: 32vw;
+  font-size: 2.1rem;
+  padding-top: 12.5vh;
+}
+
+.leftSide {
+  margin: 20vh 15vw;
+}
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-dark);
+  transition: .5s all;
+  transition-delay: 0.1s;
+}
+
+a:hover{
+  background-color: var(--color-dark);
+  color: white;
+  transition-delay: 0.1s;
+}
+
+@keyframes error {
+  0% {
+    background: #FFFFFF;
+  }
+  50% {
+    background: #ffc8c1;
+  }
+  100% {
+    background: #FFFFFF;
+  }
+}

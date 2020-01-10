@@ -34,3 +34,15 @@
 .submitEventFormButton {
   width: 30vw;
 }
+
+@keyframes done {
+  0%{
+    background: #FFFFFF;
+  }
+  50% {
+    background: #a8ffa0;
+  }
+  100% {
+    background: #FFFFFF;
+  }
+}

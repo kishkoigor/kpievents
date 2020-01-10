@@ -6,7 +6,6 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import "./index.css"
 
-import * as ROUTES from "../../constants/routes";
 import Input from "../Input";
 import Button from "../Button";
 import Textarea from "../Textarea";
@@ -17,7 +16,7 @@ import {Day} from "../Main";
     longtitle: '',
     description: '',
     datetime: new Date(),
-  }
+  };
 
 class AdminBase extends Component {
 
@@ -36,7 +35,7 @@ class AdminBase extends Component {
 
   pickDateTime = date => {
     this.setState({
-      eventdatetime: date
+      datetime: date
     });
   };
 
@@ -54,7 +53,7 @@ class AdminBase extends Component {
       return datetime.valueOf()
     };
 
-    const key = removeTime(new Date(this.state.eventdatetime.getTime()));
+    const key = removeTime(new Date(this.state.datetime.getTime()));
 
     const path = this.props.firebase.db.ref('events').child(key).push();
 
@@ -62,35 +61,29 @@ class AdminBase extends Component {
       title: this.state.title,
       longtitle: this.state.longtitle,
       description: this.state.description,
-      datetime: this.state.eventdatetime.toString(),
+      datetime: this.state.datetime.toString(),
     }).then(() => {
       console.log('added new event');
+
       this.setState({
         ...INITIAL_STATE
-      })
+      });
+
+      document.body.style.animation = "done 1s";
+      setTimeout(()=>{
+        document.body.style.animation = "none";
+      }, 1000);
 
     }).catch((error) => {
-      console.log('something went wrong');
       console.log(error);
+      document.body.style.animation = "error 1s";
+      setTimeout(()=>{
+        document.body.style.animation = "none";
+      }, 1000);
     })
 
   };
 
-  // onSubmit = event => {
-  //   const { email, password } = this.state;
-  //
-  //   this.props.firebase
-  //     .doSignInWithEmailAndPassword(email, password)
-  //     .then(() => {
-  //       this.setState({ ...INITIAL_STATE });
-  //       this.props.history.push(ROUTES.SIGN_IN);
-  //     })
-  //     .catch(error => {
-  //       this.setState({ error });
-  //     });
-  //
-  //   event.preventDefault();
-  // };
 
   render() {
 
@@ -123,7 +116,7 @@ class AdminBase extends Component {
 
 
             <DatePicker
-              selected={this.state.eventdatetime}
+              selected={this.state.datetime}
               onChange={this.pickDateTime}
               dateFormat="MMMM d, yyyy h:mm"
               minDate={new Date()}
