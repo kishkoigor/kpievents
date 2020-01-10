@@ -16,7 +16,7 @@ import {Day} from "../Main";
     title: '',
     longtitle: '',
     description: '',
-    eventdatetime: new Date(),
+    datetime: new Date(),
   }
 
 class AdminBase extends Component {
@@ -55,8 +55,6 @@ class AdminBase extends Component {
     };
 
     const key = removeTime(new Date(this.state.eventdatetime.getTime()));
-    console.log(this.state.eventdatetime.getTime());
-    console.log(key);
 
     const path = this.props.firebase.db.ref('events').child(key).push();
 
@@ -141,8 +139,7 @@ class AdminBase extends Component {
 
           <Day
             eventlist={[{...this.state}]}
-            extended
-            testing
+
             locked={false}
             onClick={()=>{}}
           />
